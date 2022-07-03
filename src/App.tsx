@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { cells } from "./helpers";
+import { cells, numbericKeys, operatorKeys } from "./helpers";
 
 const Total = ({ total }: { total: any }): JSX.Element => {
   return <div className="total">{total}</div>;
@@ -12,14 +12,32 @@ const App = () => {
   const [firstNumber, setFirstNumber] = useState<number>(0);
   const [secondNumber, setSecondNumber] = useState<number>(0);
 
-  const numbericKeys = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "."];
-  const operatorKeys = ["+", "-", "/", "AC", "%", "+/-", "=", "x"];
-
   const clearValues = () => {
     setDisplay("0");
     setFirstNumber(0);
     setSecondNumber(0);
     setOperator(null);
+  };
+
+  const calculateNewValue = () => {
+    let newDisplay = 0;
+    switch (operator) {
+      case "+":
+        newDisplay = firstNumber + secondNumber;
+        break;
+      case "x":
+        newDisplay = firstNumber * secondNumber;
+        break;
+      case "/":
+        newDisplay = firstNumber / secondNumber;
+        break;
+      case "-":
+        newDisplay = firstNumber - secondNumber;
+        break;
+    }
+    setDisplay(newDisplay.toString());
+    setFirstNumber(newDisplay);
+    setSecondNumber(0);
   };
 
   const handleButtonClick = (key: OperatorType | KeyBoardType) => {
@@ -36,26 +54,8 @@ const App = () => {
       }
     } else if (key === "AC") clearValues();
     else if (operatorKeys.includes(key)) {
-      if (operator && firstNumber !== 0 && secondNumber !== 0) {
-        let newDisplay = 0;
-        switch (operator) {
-          case "+":
-            newDisplay = firstNumber + secondNumber;
-            break;
-          case "x":
-            newDisplay = firstNumber * secondNumber;
-            break;
-          case "/":
-            newDisplay = firstNumber / secondNumber;
-            break;
-          case "-":
-            newDisplay = firstNumber - secondNumber;
-            break;
-        }
-        setDisplay(newDisplay.toString());
-        setFirstNumber(newDisplay);
-        setSecondNumber(0);
-      }
+      if (operator && firstNumber !== 0 && secondNumber !== 0)
+        calculateNewValue();
       setOperator(key as OperatorType);
     }
   };
