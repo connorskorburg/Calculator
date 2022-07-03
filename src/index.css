@@ -1,13 +1,72 @@
-body {
+* {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
+  color: #fff;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  background-color: #ccc;
+}
+
+.calculator {
+  width: 400px;
+  margin: auto;
+  margin-top: 50px;
+  background-color: #000;
+  height: 549px;
+}
+
+.total {
+  background-color: #2b2d2f;
+  font-size: 45px;
+  color: #fff;
+  text-align: right;
+  padding:  15px;
+}
+
+.cell-container {
+  display: grid;
+  width: 100%;
+  gap: 1px;
+  padding: 1px;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+button {
+  border: none;
+  padding: 25px 0;
+  text-align: center;
+  font-size: 36px;
+}
+
+button:hover { cursor: pointer;}
+
+.cell, .cell-large {
+  background-color: #5f6062;
+}
+
+.cell-dark,
+.cell-selected,
+.cell-large-selected {
+  background-color: #3f4143;
+}
+
+.cell-primary {
+  background-color: #f29f35;
+}
+
+.cell-large,
+.cell-large-selected {
+  grid-column: 1 / 3;
+}
+
+.cell-primary-selected {
+  color: #f29f35;
+  background-color: #fff;
+}
+
+.cell-selected {
+  background-color: #3f4143;
 }
