@@ -70,3 +70,7 @@ button:hover { cursor: pointer;}
 .cell-selected {
   background-color: #3f4143;
 }
+
+.cell-dark-selected {
+  background-color: #5f6062;
+}
