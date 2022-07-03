@@ -1,9 +1,7 @@
 import { SetStateAction, Dispatch, useState } from "react";
 import { cells, numbericKeys, operatorKeys } from "./helpers";
-
-const Total = ({ total }: { total: string }): JSX.Element => {
-  return <div className="total">{total}</div>;
-};
+import Button from "./components/Button";
+import Total from "./components/Total";
 
 const App = () => {
   const [display, setDisplay] = useState<string>("0");
@@ -85,15 +83,12 @@ const App = () => {
       <Total total={display} />
       <div className="cell-container">
         {cells.map(({ className, label }) => (
-          <button
+          <Button
             key={label}
-            className={`${className}`}
-            onClick={() =>
-              handleButtonClick(label as KeyBoardType | OperatorType)
-            }
-          >
-            {label}
-          </button>
+            className={className}
+            label={label}
+            handleButtonClick={handleButtonClick}
+          />
         ))}
       </div>
     </div>
