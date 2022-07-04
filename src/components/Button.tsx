@@ -8,7 +8,7 @@ const Button = ({ className, label, handleButtonClick }: ButtonProps) => {
   return (
     <button
       key={label}
-      className={`${className}`}
+      className={className}
       onClick={() => handleButtonClick(label as KeyBoardType | OperatorType)}
     >
       {label}
