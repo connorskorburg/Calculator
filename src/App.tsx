@@ -25,7 +25,10 @@ const App = () => {
     value: number | null,
     setValue: Dispatch<SetStateAction<number | null>>
   ) => {
-    if (value) {
+    if (!value) {
+      setValue(0);
+      setDisplay("-0");
+    } else {
       const newValue = value * -1;
       setValue(newValue);
       setDisplay(newValue.toString());
@@ -61,7 +64,13 @@ const App = () => {
     setValue: Dispatch<SetStateAction<number | null>>
   ) => {
     if (key === "." && (display.includes(".") || display === "0")) return;
-    const newValue = !value ? key : display + key;
+
+    let newValue: string = key;
+    if (value && display !== "-0") {
+      newValue = display + key;
+    } else if (display === "-0") {
+      newValue = "-" + key;
+    }
     setValue(parseFloat(newValue));
     setDisplay(newValue.toString());
   };
@@ -83,7 +92,10 @@ const App = () => {
     } else if (key === "AC") {
       clearValues();
     } else if (key === "+/-") {
-      handleNegativeNumber(input ? input : total, input ? setInput : setTotal);
+      handleNegativeNumber(
+        operator ? input : total,
+        operator ? setInput : setTotal
+      );
     } else if (operatorKeys.includes(key)) {
       if (operator && input !== null) {
         calculateNewValue();
