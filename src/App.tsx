@@ -26,13 +26,12 @@ const App = () => {
     value: number | null,
     setValue: Dispatch<SetStateAction<number | null>>
   ) => {
-    if (!value) {
+    if (value !== null) {
+      setDisplay(display.includes("-") ? display.slice(1) : "-" + display);
+      setValue(value * -1);
+    } else if (value === null) {
       setValue(0);
-      setDisplay(display === "-0" ? "0" : "-0");
-    } else {
-      const newValue = value * -1;
-      setValue(newValue);
-      setDisplay(newValue.toString());
+      setDisplay("-0");
     }
   };
 
@@ -64,13 +63,18 @@ const App = () => {
     value: number | null,
     setValue: Dispatch<SetStateAction<number | null>>
   ) => {
-    if (key === "." && (display.includes(".") || display === "0")) return;
-
     let newValue: string = key;
-    if (value && display !== "-0") {
+
+    if (value !== null) {
+      if (key === "." && display.includes(".")) return;
       newValue = display + key;
-    } else if (display === "-0") {
-      newValue = "-" + key;
+    } else if (value === null && key === ".") {
+      newValue = "0.";
+    }
+
+    // remove leading zero
+    if (newValue[0] === "0" && !newValue.includes(".") && newValue !== "0") {
+      newValue = newValue.slice(1);
     }
     setValue(parseFloat(newValue));
     setDisplay(newValue.toString());
