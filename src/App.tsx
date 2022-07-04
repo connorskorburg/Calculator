@@ -25,9 +25,11 @@ const App = () => {
     value: number | null,
     setValue: Dispatch<SetStateAction<number | null>>
   ) => {
-    const newValue = (value || 0) * -1;
-    setValue(newValue);
-    setDisplay(newValue.toString());
+    if (value) {
+      const newValue = value * -1;
+      setValue(newValue);
+      setDisplay(newValue.toString());
+    }
   };
 
   const calculateNewValue = () => {
@@ -75,12 +77,9 @@ const App = () => {
     } else if (key === "AC") {
       clearValues();
     } else if (key === "+/-") {
-      handleNegativeNumber(
-        !operator ? total : input,
-        !operator ? setTotal : setInput
-      );
+      handleNegativeNumber(input ? input : total, input ? setInput : setTotal);
     } else if (operatorKeys.includes(key)) {
-      if (operator && total !== null && input !== null) {
+      if (operator && input !== null) {
         calculateNewValue();
       }
       setOperator(key as OperatorType);
