@@ -1,3 +1,4 @@
+import { numbericKeys } from "../helpers";
 interface ButtonProps {
   className: string;
   label: string;
@@ -7,6 +8,9 @@ interface ButtonProps {
 const Button = ({ className, label, handleButtonClick }: ButtonProps) => {
   return (
     <button
+      data-testid={
+        numbericKeys.includes(label) ? `number-${label}` : `operator-${label}`
+      }
       key={label}
       className={className}
       onClick={() => handleButtonClick(label as KeyBoardType | OperatorType)}
