@@ -60,7 +60,7 @@ const App = () => {
     value: number | null,
     setValue: Dispatch<SetStateAction<number | null>>
   ) => {
-    if (key === "." && display.includes(".")) return;
+    if (key === "." && (display.includes(".") || display === "0")) return;
     const newValue = !value ? key : display + key;
     setValue(parseFloat(newValue));
     setDisplay(newValue.toString());
@@ -74,6 +74,12 @@ const App = () => {
         !operator ? total : input,
         !operator ? setTotal : setInput
       );
+    } else if (key === "%") {
+      if (total) {
+        const newValue = total / 100;
+        setTotal(newValue);
+        setDisplay(newValue.toString());
+      }
     } else if (key === "AC") {
       clearValues();
     } else if (key === "+/-") {
