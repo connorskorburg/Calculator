@@ -72,7 +72,6 @@ const App = () => {
       newValue = "0.";
     }
 
-    // remove leading zero
     if (newValue[0] === "0" && !newValue.includes(".") && newValue !== "0") {
       newValue = newValue.slice(1);
     }
