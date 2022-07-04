@@ -27,7 +27,7 @@ const App = () => {
   ) => {
     if (!value) {
       setValue(0);
-      setDisplay("-0");
+      setDisplay(display === "-0" ? "0" : "-0");
     } else {
       const newValue = value * -1;
       setValue(newValue);
