@@ -17,7 +17,7 @@ from here I created functions to break the code up into the functionality we nee
 - `handleButtonClick`:
   - this function determines where we move next: to handle the key change, clear the values, calculate a result, set a negative number, or handle percentages
 - `handleKeyChange`:
-  - this function sets the string value that appears as the total on the calculator. It formats the string properly for the UI and handles concatenation of srings (how I kept track of which value was the user's input vs. the total was by intially setting the `input` variable to `null` and the total to `zero`. I would know that if the `input` was `null`, then we have not entered a second input yet)
+  - this function sets the string value that appears as the total on the calculator. It formats the string properly for the UI and handles concatenation of srings (how I kept track of which value was the user's input vs. the total was by intially setting the `input` variable to `null` and the total to `zero`. I would know that if the `input` was `null`, then we have not entered a second number to calculate yet)
 - `calculateNewValue`:
   - this function calculates a new total by either adding, subtracting, multiplying or dividing the `total` and the `input`
 - `handleNegativeNumber`:
