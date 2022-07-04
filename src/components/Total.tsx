@@ -3,7 +3,7 @@ interface TotalProps {
 }
 
 const Total = ({ total }: TotalProps): JSX.Element => (
-  <div className="total">{total}</div>
+  <div id="total">{total}</div>
 );
 
 export default Total;

@@ -18,7 +18,7 @@ body {
   height: 549px;
 }
 
-.total {
+#total {
   background-color: #2b2d2f;
   font-size: 45px;
   color: #fff;

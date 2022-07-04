@@ -19,6 +19,7 @@ const App = () => {
     setTotal(0);
     setInput(null);
     setOperator(null);
+    setSelectedKey(null);
   };
 
   const handleNegativeNumber = (
