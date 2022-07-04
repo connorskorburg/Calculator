@@ -81,8 +81,8 @@ const App = () => {
     if (numbericKeys.includes(key)) {
       handleKeyChange(
         key as KeyBoardType,
-        !operator ? total : input,
-        !operator ? setTotal : setInput
+        operator && operator !== "=" ? input : total,
+        operator && operator !== "=" ? setInput : setTotal
       );
     } else if (key === "%") {
       if (total) {
@@ -94,8 +94,8 @@ const App = () => {
       clearValues();
     } else if (key === "+/-") {
       handleNegativeNumber(
-        operator ? input : total,
-        operator ? setInput : setTotal
+        operator && operator !== "=" ? input : total,
+        operator && operator !== "=" ? setInput : setTotal
       );
     } else if (operatorKeys.includes(key)) {
       if (operator && input !== null) {

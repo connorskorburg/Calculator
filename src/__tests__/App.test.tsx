@@ -1,5 +1,5 @@
 import { fireEvent, render, screen } from "@testing-library/react";
-import App from "./App";
+import App from "../App";
 
 test("adds 4 and 5 together", () => {
   render(<App />);
