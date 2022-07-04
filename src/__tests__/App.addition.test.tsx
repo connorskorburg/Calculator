@@ -99,3 +99,21 @@ test("adds 0 and -37 together", () => {
   });
   expect(screen.getByTestId("total").innerHTML).toBe("-37");
 });
+
+test("adds 10, 5 and 17 together", () => {
+  render(<App />);
+  const keysPressed = [
+    "number-1",
+    "number-0",
+    "operator-+",
+    "number-5",
+    "operator-+",
+    "number-1",
+    "number-7",
+    "operator-=",
+  ];
+  keysPressed.forEach((key) => {
+    fireEvent.click(screen.getByTestId(key));
+  });
+  expect(screen.getByTestId("total").innerHTML).toBe("32");
+});
