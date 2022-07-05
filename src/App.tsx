@@ -86,6 +86,14 @@ const App = () => {
 
     if (newValue[0] === "0" && !newValue.includes(".") && newValue !== "0") {
       newValue = newValue.slice(1);
+    } else if (
+      newValue[0] === "-" &&
+      newValue.length > 1 &&
+      !newValue.includes(".")
+    ) {
+      if (newValue[1] === "0") {
+        newValue = newValue.slice(0, 1) + newValue.slice(2);
+      }
     }
     setValue(parseFloat(newValue));
     setDisplay(newValue.toString());
