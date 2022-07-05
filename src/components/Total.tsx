@@ -4,7 +4,7 @@ interface TotalProps {
 
 const Total = ({ total }: TotalProps): JSX.Element => (
   <div data-testid="total" id="total">
-    {total}
+    {total.slice(0, 9)}
   </div>
 );
 
