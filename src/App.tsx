@@ -22,6 +22,18 @@ const App = () => {
     setSelectedKey(null);
   };
 
+  const handlePercentage = () => {
+    if (input === null && total) {
+      const newValue = total / 100;
+      setTotal(newValue);
+      setDisplay(newValue.toString());
+    } else if (input !== null && total) {
+      const newValue = total / (100 / input);
+      setInput(newValue);
+      setDisplay(newValue.toString());
+    }
+  };
+
   const handleNegativeNumber = (
     value: number | null,
     setValue: Dispatch<SetStateAction<number | null>>
@@ -88,11 +100,7 @@ const App = () => {
         operator && operator !== "=" ? setInput : setTotal
       );
     } else if (key === "%") {
-      if (total) {
-        const newValue = total / 100;
-        setTotal(newValue);
-        setDisplay(newValue.toString());
-      }
+      handlePercentage();
     } else if (key === "AC") {
       clearValues();
     } else if (key === "+/-") {
