@@ -24,3 +24,5 @@ from here I created functions to break the code up into the functionality we nee
   - this function handles when the `+/-` key is clicked. it will insert a "-" char to the display string (or remove it if it already exists) and updates the numeric value as well
 - `clearValues`:
   - this function resets the state when the `AC` key is pressed
+- `handlePercentage`:
+  - this function either divides the total by 100 if no `input` is present, or is calculates the percentage of the total that has been entered
